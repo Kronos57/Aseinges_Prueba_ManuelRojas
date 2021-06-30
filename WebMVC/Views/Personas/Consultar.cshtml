@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Entities.Persona>
+
+@{
+    ViewBag.Title = "Consultar Documento";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <form action="@Url.Action("Consultar", "Personas")" method="post">
+        <div class="form-group">
+                @Html.Label("Número Documento:", new { @class = "control-label" })
+                @Html.TextBox("txtDocumento", null, new { @class = "form-control" })
+        </div>
+        <div>
+            <button class="btn btn-info" type="submit" id="btnConsultar">
+                Consultar
+            </button>
+        </div>
+    </form>
+</div>
+<br />
+<div>
+    <table class="table">
+        <tr>
+            <th>Número Documento</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Correo Electrónico</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CorreoElectronico)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
